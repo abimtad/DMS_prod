@@ -72,7 +72,7 @@ export default function ProjectsPage() {
   }
 
   if (status === "failed") {
-    return <ErrorState />;
+    return <p>failed</p>;
   }
 
   // Use the actual pagination data from the API
