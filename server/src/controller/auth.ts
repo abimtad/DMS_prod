@@ -96,7 +96,12 @@ export const logOut = async (
   res: Response,
   next: NextFunction
 ) => {
-  res.cookie("jwt", "", { maxAge: 0 });
+  res.clearCookie("jwt", {
+    maxAge: 0,
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+  });
   res.status(200).json({ message: "Logged out Successfully" });
 };
 export const verifyUser = async (
