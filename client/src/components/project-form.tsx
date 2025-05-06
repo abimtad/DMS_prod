@@ -412,8 +412,8 @@ export default function ProjectForm({
     try {
       const url =
         mode === "create"
-          ? "http://localhost:8000/project"
-          : `http://localhost:8000/project/${projectId}`;
+          ? "https://dms-prod-3w6u.onrender.com/project"
+          : `https://dms-prod-3w6u.onrender.com/project/${projectId}`;
 
       const method = mode === "create" ? "POST" : "PUT";
 

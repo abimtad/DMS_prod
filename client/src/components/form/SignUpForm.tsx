@@ -63,17 +63,20 @@ const SignUpForm = () => {
     setError(null);
 
     try {
-      const response = await fetch("http://localhost:8000/api/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: values.username,
-          email: values.email,
-          password: values.password,
-        }),
-      });
+      const response = await fetch(
+        "https://dms-prod-3w6u.onrender.com/api/signup",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: values.username,
+            email: values.email,
+            password: values.password,
+          }),
+        }
+      );
 
       if (response.ok) {
         router.push("/sign-in");

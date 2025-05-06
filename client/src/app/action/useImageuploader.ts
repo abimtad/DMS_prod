@@ -16,7 +16,7 @@ const useImageUploader = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:8000/upload/images`,
+        `https://dms-prod-3w6u.onrender.com/upload/images`,
         file,
         {
           headers: {

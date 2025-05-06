@@ -71,11 +71,14 @@ export default function ProjectInfo({
     formData.append("folder", "project_covers");
 
     try {
-      const res = await fetch("http://localhost:8000/upload/coverimg", {
-        method: "POST",
-        body: formData,
-        credentials: "include",
-      });
+      const res = await fetch(
+        "https://dms-prod-3w6u.onrender.com/upload/coverimg",
+        {
+          method: "POST",
+          body: formData,
+          credentials: "include",
+        }
+      );
 
       if (!res.ok) {
         throw new Error(`Upload failed with status: ${res.status}`);
@@ -125,7 +128,7 @@ export default function ProjectInfo({
 
     setUploading(true);
 
-    fetch("http://localhost:8000/upload/coverimg", {
+    fetch("https://dms-prod-3w6u.onrender.com/upload/coverimg", {
       method: "POST",
       body: uploadData,
       credentials: "include",

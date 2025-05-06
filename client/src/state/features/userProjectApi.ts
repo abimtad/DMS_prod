@@ -25,7 +25,7 @@ interface UserProjectsResponse {
 export const userProjectsApi = createApi({
   reducerPath: "userProjectApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:8000/user",
+    baseUrl: "https://dms-prod-3w6u.onrender.com/user",
     credentials: "include",
   }),
   tagTypes: ["Project"], // Optional: for broader cache management

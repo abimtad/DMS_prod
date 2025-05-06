@@ -31,7 +31,7 @@ export default function Home() {
         setIsLoadingProject(true);
         try {
           const response = await fetch(
-            `http://localhost:8000/project/${projectId}`,
+            `https://dms-prod-3w6u.onrender.com/project/${projectId}`,
             {
               credentials: "include",
             }

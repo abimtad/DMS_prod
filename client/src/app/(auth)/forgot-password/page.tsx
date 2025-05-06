@@ -42,7 +42,7 @@ function ForgotPassword() {
     setSuccess(false); // reset previous success state
     try {
       const response = await fetch(
-        "http://localhost:8000/api/resetpasswordrequest",
+        "https://dms-prod-3w6u.onrender.com/api/resetpasswordrequest",
         {
           method: "POST",
           headers: {

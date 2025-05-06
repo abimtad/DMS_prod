@@ -15,7 +15,7 @@ const useFileUploader = () => {
     console.log(file);
     try {
       const response = await axios.post(
-        `http://localhost:8000/upload/files`,
+        `https://dms-prod-3w6u.onrender.com/upload/files`,
         file,
         {
           onUploadProgress: (progressEvent) => {

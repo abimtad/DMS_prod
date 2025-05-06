@@ -21,6 +21,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { useRouter } from "next/router";
+import ErrorState from "@/components/error-state";
 
 export default function ProjectsPage() {
   const dispatch = useDispatch<AppDispatch>();
@@ -71,18 +72,7 @@ export default function ProjectsPage() {
   }
 
   if (status === "failed") {
-    return (
-      <div className="container mx-auto py-8 px-4">
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold">Projects</h1>
-        </div>
-        <div className="text-red-500 text-center">
-          Fail;d to fetch.{" "}
-          <button onClick={() => router.reload()}>Refresh</button> the page and
-          try again!
-        </div>
-      </div>
-    );
+    return <ErrorState />;
   }
 
   // Use the actual pagination data from the API

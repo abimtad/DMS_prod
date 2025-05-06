@@ -184,7 +184,7 @@ export const fetchProjects = createAsyncThunk(
   async (page: number = 1, { rejectWithValue }) => {
     try {
       const response = await fetch(
-        `http://localhost:8000/project?page=${page}`,
+        `https://dms-prod-3w6u.onrender.com/project?page=${page}`,
         {
           credentials: "include",
         }

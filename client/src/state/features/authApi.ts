@@ -17,7 +17,7 @@ type User = {
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:8000/api",
+    baseUrl: "https://dms-prod-3w6u.onrender.com/api",
     credentials: "include", // very important for sending cookies
   }),
   endpoints: (builder) => ({

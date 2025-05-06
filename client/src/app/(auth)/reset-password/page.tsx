@@ -62,16 +62,19 @@ function ResetPassword() {
       // TODO: API Request Implementation
       // Send the new password, userId, and resetString to the API
       // Example API call:
-      const response = await fetch("http://localhost:8000/api/resetpassword", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          userId,
-          resetString,
-          newPassword: data.password,
-        }),
-        credentials: "include",
-      });
+      const response = await fetch(
+        "https://dms-prod-3w6u.onrender.com/api/resetpassword",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            userId,
+            resetString,
+            newPassword: data.password,
+          }),
+          credentials: "include",
+        }
+      );
 
       if (!response.ok) {
         const errorData = await response.json();
