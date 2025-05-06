@@ -1,7 +1,7 @@
 "use client";
 
-import { useRouter } from "next/compat/router";
 import { RefreshCw, Rocket, AlertTriangle } from "lucide-react";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 export default function ErrorState() {
@@ -33,7 +33,7 @@ export default function ErrorState() {
               Houston, we have a problem!
             </h2>
             <p className="text-slate-300">
-              We couldn't reach the mothership to fetch your projects.
+              We couldn&apos;t reach the mothership to fetch your projects.
             </p>
 
             <div className="flex items-center justify-center mt-2 text-red-300">
