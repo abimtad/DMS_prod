@@ -1,35 +1,34 @@
-import express, { application, Request, Response } from "express";
-import multer from "multer";
 import { initializeApp, cert } from "firebase-admin/app";
 import { getStorage } from "firebase-admin/storage";
 import { getFirestore } from "firebase-admin/firestore";
 import dotenv from "dotenv";
-import fs from "fs";
-import path, { dirname } from "path";
 
-import { fileURLToPath } from "url";
 dotenv.config();
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
-// Firebase Admin Setup
-const serviceAccountPath = path.resolve(
-  __dirname,
-  "..",
+// 1. Validate environment variables
+const privateKey = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"); // Fix newlines
+const clientEmail = process.env.GOOGLE_CLIENT_EMAIL;
+const projectId = process.env.GOOGLE_PROJECT_ID;
+const storageBucket = process.env.STORAGE_BUCKET;
 
-  "serviceAccountKey.json" // Fixed typo from "seviceAccountKey.json"
-);
-// C:\Users\Dave\Desktop\nextjs-auth\server\src\uti
-if (!fs.existsSync(serviceAccountPath)) {
-  throw new Error("Missing serviceAccountKey.json file");
+if (!privateKey || !clientEmail || !projectId || !storageBucket) {
+  throw new Error("❌ Missing required Firebase environment variables");
 }
 
-const serviceAccount = JSON.parse(fs.readFileSync(serviceAccountPath, "utf-8"));
-initializeApp({
-  credential: cert(serviceAccount),
-  storageBucket: process.env.STORAGE_BUCKET,
-});
-const db = getFirestore();
-const bucket = getStorage().bucket();
+// 2. Initialize Firebase Admin SDK
+const firebaseConfig = {
+  credential: cert({
+    projectId,
+    clientEmail,
+    privateKey,
+  }),
+  storageBucket,
+};
+
+const app = initializeApp(firebaseConfig);
+
+// 3. Initialize Firestore & Storage
+const db = getFirestore(app);
+const bucket = getStorage(app).bucket();
 
 export { db, bucket };

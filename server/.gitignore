@@ -90,3 +90,7 @@ dump.rdb
 # System Files
 Thumbs.db
 ehthumbs.db
+
+# private keys
+
+serviceAccountKey.json
